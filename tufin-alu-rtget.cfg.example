@@ -1,0 +1,25 @@
+{
+  "keyfile" : "tufin-alu-rtget.key",
+  "credentials" : {
+    "login" : "cvs1",
+    "password" : "%1"
+  },
+  "outdir" : "out",
+
+  "expect" : {
+    "spawn" : "/usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l %s %s",
+    "sleep" : 1,
+    "chat" : [
+      [ "password:", "%1\r" ],
+      [ "#", "environment no more\r" ],
+      [ "#", "show router %vprn route-table\r", "route-table" ],
+      [ "#", "show router %vprn interface\r", "interfaces" ],
+      [ "#", "logout\r" ]
+    ]
+  },
+
+  "routers" : {
+    "bcepe00" : [ 102, 110 ],
+    "bcepe01" : [ 102, 110 ]
+  },
+}
